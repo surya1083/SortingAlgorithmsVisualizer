@@ -1,0 +1,263 @@
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  width: min(100vw, 1100px);
+  margin: 0 auto;
+  padding: 15px;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+  min-height: 100vh;
+  max-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 1.6em;
+  color: #1e3a8a;
+  margin: 0;
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.header-controls select {
+  padding: 6px;
+  font-size: 0.9em;
+  border: 2px solid #93c5fd;
+  border-radius: 5px;
+  background-color: #f9fafb;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.header-controls select:hover {
+  border-color: #3b82f6;
+}
+
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.speed-control span {
+  font-size: 0.85em;
+  color: #374151;
+}
+
+.speed-control input {
+  width: 80px;
+  accent-color: #3b82f6;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.input span {
+  font-size: 0.9em;
+  color: #374151;
+  font-weight: 500;
+}
+
+.input input {
+  padding: 10px;
+  font-size: 0.9em;
+  width: 100%;
+  max-width: 400px;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
+}
+
+.visualizer {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 15px;
+  min-height: 400px;
+  max-height: 400px;
+  align-items: flex-end;
+  background-color: #ffffff;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.bar {
+  width: calc(100% / 15 - 4px);
+  background-color: #3b82f6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  visibility: visible;
+  min-height: 10px;
+  max-height: 400px;
+  transition: background-color 0.3s ease, height 0.3s ease;
+}
+
+.bar.comparing {
+  background-color: #ef4444;
+}
+
+.bar.pivot {
+  background-color: #f59e0b;
+}
+
+.bar.sorted {
+  background-color: #10b981;
+}
+
+.bar.negative {
+  background-color: #8b5cf6;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.controls button {
+  padding: 10px 20px;
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.controls button:hover:not(:disabled) {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.controls button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.steps {
+  margin-top: 10px;
+  text-align: center;
+  position: relative;
+  min-height: 60px;
+  max-height: 100px;
+  visibility: visible;
+  overflow: hidden;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.steps h2 {
+  font-size: 1.3em;
+  color: #1e3a8a;
+  margin-bottom: 8px;
+}
+
+.steps p {
+  font-size: 0.9em;
+  color: #374151;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 1280px) {
+  .app {
+    padding: 10px;
+  }
+
+  .visualizer {
+    min-height: 350px;
+    max-height: 350px;
+  }
+
+  .bar {
+    width: calc(100% / 15 - 3px);
+    font-size: 0.75em;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .header-controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input input {
+    max-width: 100%;
+  }
+
+  .visualizer {
+    gap: 3px;
+    min-height: 300px;
+    max-height: 300px;
+  }
+
+  .bar {
+    width: calc(100% / 15 - 2px);
+    font-size: 0.7em;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .controls button {
+    padding: 8px 14px;
+    font-size: 0.85em;
+  }
+
+  .steps {
+    min-height: 50px;
+    max-height: 80px;
+  }
+}
